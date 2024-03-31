@@ -1,30 +1,24 @@
 
 import express from "express"
-import Users from "../models/userModel.js"
+import { login, register} from "../services/userService.js"
 
+//** */
 const userRouter=express.Router()
 
 
-userRouter.get("/get", (req, res)=>{
-    res.send("islem tamam")
-})
+// userRouter.get("/get", (req, res)=>{
+//     res.send("islem tamam")
+// })
 
 
 
-userRouter.post("/post", async(req,res)=>{
-    const user=req.body
 
-    try {
-const userData=await Users.create(user)
-res.status(200).json(userData)
-        
-    } catch (error) {
-       return res.status(404).json({message:"User couldn't find"})
 
-        
-    }
-}
-)
+
+// userRouter.get("/", findAll)
+// userRouter.get("/:id", find),
+userRouter.post("/login",login),
+userRouter.post("/register", register)
 
 
 
